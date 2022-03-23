@@ -1,0 +1,16 @@
+button {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background-color: transparent;
+  border: transparent;
+}
+
+button:disabled {
+  background-color: rgb(209, 95, 95);
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  border: 2px transparent;
+}

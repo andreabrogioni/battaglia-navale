@@ -1,0 +1,18 @@
+table {
+  border-collapse: separate;
+  border-spacing: 3px;
+  margin: 0 auto;
+  background-color: #527bce;
+}
+
+td {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border: 2px solid #d9e4fc;
+  border-radius: 15px;
+}
+
+td:hover {
+  background: #e42b2b;
+}
