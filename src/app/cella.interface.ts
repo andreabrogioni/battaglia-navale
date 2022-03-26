@@ -3,6 +3,7 @@ export interface cell {
   disabled: boolean;
   x: string;
   y: string;
+  ship: boolean;
 }
 
 export enum typeEnum {

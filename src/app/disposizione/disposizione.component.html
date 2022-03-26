@@ -1,1 +1,8 @@
-
+<div *ngFor="let nave of arrayNavi">
+  <p *ngIf="nave.abbattuta; naveIntatta">
+    {{ nave.tipoNave }}è ststa abbattuta
+  </p>
+  <ng-template #naveIntatta>
+    <p>{{ nave.tipoNave }}</p>
+  </ng-template>
+</div>

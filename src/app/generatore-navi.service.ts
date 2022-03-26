@@ -1,21 +1,87 @@
 import { Injectable } from '@angular/core';
-import { cell } from './cella.interface';
+import { nave } from './disposizione/nave.interface';
+import { GestorePartitaService } from './gestore-partita.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GeneratoreNaviService {
-  /*numeroPortaerei: number = 1;
-  numeroIncrociatori: number = 2;
-  numeroTorpedinieri: number = 3;
-  numeroSottomarini: number = 4;
+  arrayNavi: nave[] = [
+    {
+      tipoNave: 'portaerei',
+      lunghezzaNave: 4,
+      colpiSubiti: 0,
+      coordinate: ['a1', 'b1', 'c1', 'd1'],
+      abbattuta: false,
+    },
 
-  lunghezzaPortaerei: number = 4;
-  lunghezzaIncrociatori: number = 3;
-  lunghezzaTorpedinieri: number = 2;
-  lunghezaSottomarini: number = 1;*/
+    {
+      tipoNave: 'incrociatore1',
+      lunghezzaNave: 3,
+      colpiSubiti: 0,
+      coordinate: ['g1', 'g2', 'g3'],
+      abbattuta: false,
+    },
 
-  arrayLunghezze: number[] = [4, 3, 3, 2, 2, 2, 1, 1, 1];
+    {
+      tipoNave: 'incrociatore2',
+      lunghezzaNave: 3,
+      colpiSubiti: 0,
+      coordinate: ['i1', 'i2', 'i3'],
+      abbattuta: false,
+    },
+
+    {
+      tipoNave: 'torpediniere1',
+      lunghezzaNave: 2,
+      colpiSubiti: 0,
+      coordinate: ['b3', 'c3'],
+      abbattuta: false,
+    },
+    {
+      tipoNave: 'torpediniere2',
+      lunghezzaNave: 2,
+      colpiSubiti: 0,
+      coordinate: ['i7', 'i8'],
+      abbattuta: false,
+    },
+    {
+      tipoNave: 'torpediniere3',
+      lunghezzaNave: 2,
+      colpiSubiti: 0,
+      coordinate: ['i9', 'i10'],
+      abbattuta: false,
+    },
+
+    {
+      tipoNave: 'sommergibile1',
+      lunghezzaNave: 1,
+      colpiSubiti: 0,
+      coordinate: ['e9'],
+      abbattuta: false,
+    },
+    {
+      tipoNave: 'sommergibile2',
+      lunghezzaNave: 1,
+      colpiSubiti: 0,
+      coordinate: ['a6'],
+      abbattuta: false,
+    },
+    {
+      tipoNave: 'sommergibile3',
+      lunghezzaNave: 1,
+      colpiSubiti: 0,
+      coordinate: ['d6'],
+      abbattuta: false,
+    },
+    {
+      tipoNave: 'sommergibile4',
+      lunghezzaNave: 1,
+      colpiSubiti: 0,
+      coordinate: ['f5'],
+      abbattuta: false,
+    },
+  ];
 
   arrayRighe: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
   arrayColonne: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
@@ -25,10 +91,50 @@ export class GeneratoreNaviService {
   arrayDirezioni: number[] = [0, 90]; //per ora sto usando solo due direzioni oriz e vert
   direzioneRandom: number = 0;
   arrayCaselleOccupate: string[] = [];
-  public barche: string[] = ['a1', 'c1'];
   trovata: string; //se trova una coordinata è string ma senno è undefinded, che
 
-  constructor() {}
+  constructor(private gestorePartitaService: GestorePartitaService) {}
+
+  getNavi(): nave[] {
+    let cloneArray: nave[] = this.arrayNavi.slice();
+    return cloneArray;
+  }
+
+  //algoritmo coordinate random
+
+  creaGriglia() {
+    for (let nave of this.arrayNavi) {
+      this.creaNave(nave.lunghezzaNave);
+    }
+  }
+
+  creaNave(lunghezza) {
+    this.coordinataIniziale =
+      this.arrayColonne[this.letteraColonna()] +
+      this.arrayRighe[this.numeroRiga()];
+    this.trovata = this.arrayCaselleOccupate.find(
+      (element) => element === this.coordinataIniziale
+    );
+    this.direzioneRandom = this.direzioneNave();
+  }
+
+  private numeroRiga(): string {
+    return this.arrayRighe[Math.floor(Math.random() * this.arrayRighe.length)];
+  }
+
+  private letteraColonna(): string {
+    return this.arrayColonne[
+      Math.floor(Math.random() * this.arrayColonne.length)
+    ];
+  }
+
+  private direzioneNave(): number {
+    return this.arrayDirezioni[
+      Math.floor(Math.random() * this.arrayDirezioni.length)
+    ];
+  }
+
+  private controllaSpaziLiberi() {}
 
   posizionaNave(lunghezaNave) {
     //gli faccio restituire un array di coordinate che sono necessarie per disporre la nave
@@ -68,21 +174,5 @@ export class GeneratoreNaviService {
     } else {
       //la casella è occupata
     }
-  }
-
-  private direzioneNave(): number {
-    return this.arrayDirezioni[
-      Math.floor(Math.random() * this.arrayDirezioni.length)
-    ];
-  }
-
-  private numeroRiga(): string {
-    return this.arrayRighe[Math.floor(Math.random() * this.arrayRighe.length)];
-  }
-
-  private letteraColonna(): string {
-    return this.arrayColonne[
-      Math.floor(Math.random() * this.arrayColonne.length)
-    ];
   }
 }

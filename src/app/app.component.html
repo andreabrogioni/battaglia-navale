@@ -1,15 +1,23 @@
-<html style="background-color: #527bce">
-  <table>
-    <tr *ngFor="let y of arrayRighe">
-      <td *ngFor="let x of arrayColonne">
-        <tile-component
-          [value]="findCella(x, y)"
-          [x]="x"
-          [y]="y"
-          (coordinate)="onCoordinate($event)"
-        ></tile-component>
-        <app-disposizione [xy]="bersaglio"></app-disposizione>
-      </td>
-    </tr>
-  </table>
+<html>
+  <body>
+    <div class="tabella">
+      <table>
+        <tr *ngFor="let y of arrayRighe">
+          <td *ngFor="let x of arrayColonne">
+            <tile-component
+              [x]="x"
+              [y]="y"
+              (coordinate)="onTentativo($event)"
+              [occupata]="occupaCasella(x, y)"
+            ></tile-component>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="center">
+      <app-disposizione [xy]="bersaglio"></app-disposizione>
+      <app-vite></app-vite>
+    </div>
+  </body>
 </html>

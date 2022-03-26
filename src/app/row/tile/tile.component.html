@@ -1,3 +1,10 @@
-<button (click)="onFire()" [disabled]="dati.disabled">
+<button
+  (click)="onFire()"
+  [disabled]="dati.disabled"
+  [ngClass]="{
+    hit: dati.disabled && dati.ship === true,
+    miss: dati.disabled && dati.ship === false
+  }"
+>
   {{ this.xy }}
 </button>

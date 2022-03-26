@@ -1,18 +1,33 @@
+body {
+  background-color: rgb(77, 179, 212);
+  opacity: 0.8;
+}
+
 table {
   border-collapse: separate;
   border-spacing: 3px;
   margin: 0 auto;
-  background-color: #527bce;
+  background-color: transparent;
+  border-radius: 15px;
 }
 
 td {
   position: relative;
-  width: 70px;
-  height: 70px;
+  width: 5px;
+  height: 5px;
   border: 2px solid #d9e4fc;
   border-radius: 15px;
 }
 
 td:hover {
   background: #e42b2b;
+}
+
+.center {
+  margin-top: 3%;
+  margin-left: 35%;
+  width: 30%;
+  border: 5px solid hsl(0, 0%, 100%);
+  padding: 3px;
+  border-radius: 15px;
 }

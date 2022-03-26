@@ -1,0 +1,6 @@
+<h3>vite {{ this.vite }}</h3>
+<p *ngIf="this.vite === 0">GAMEOVER</p>
+<p *ngIf="this.vittoria === true">VITTORIA</p>
+<button type="button" class="btn btn-warning" (click)="onRestart()">
+  restart
+</button>
