@@ -1,8 +1,15 @@
-<div *ngFor="let nave of arrayNavi">
-  <p *ngIf="nave.abbattuta; naveIntatta">
-    {{ nave.tipoNave }}è ststa abbattuta
-  </p>
-  <ng-template #naveIntatta>
-    <p>{{ nave.tipoNave }}</p>
-  </ng-template>
+<div class="float container">
+  <div class="side-container">
+    <div *ngFor="let nave of arrayNavi">
+      <p *ngIf="nave.abbattuta">{{ nave.tipoNave }} è stata abbattuta</p>
+    </div>
+  </div>
+
+  <div class="side-container">
+    <div *ngFor="let nave of arrayNavi">
+      <p *ngIf="!nave.abbattuta">
+        {{ nave.tipoNave }} ({{ nave.lunghezzaNave }})
+      </p>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,19 @@
-<h3>vite {{ this.vite }}</h3>
-<p *ngIf="this.vite === 0">GAMEOVER</p>
-<p *ngIf="this.vittoria === true">VITTORIA</p>
-<button type="button" class="btn btn-warning" (click)="onRestart()">
-  restart
-</button>
+<head>
+  <script
+    src="https://kit.fontawesome.com/ffa0aa41c9.js"
+    crossorigin="anonymous"
+  ></script>
+</head>
+<div class="container">
+  <h3 class="text">vite {{ this.vite }}</h3>
+  <div>
+    <i class="fa-solid fa-heart"></i>
+    <!--non riesco a inserire le icone-->
+  </div>
+
+  <h1 *ngIf="this.vite === 0" class="text">GAMEOVER</h1>
+  <h1 *ngIf="this.vittoria === true" class="text">VITTORIA</h1>
+  <button type="button" class="btn btn-warning" (click)="onRestart()">
+    restart
+  </button>
+</div>

@@ -36,6 +36,10 @@ export class TileComponent implements OnInit {
     if (this.occupata === true) {
       this.dati.ship = true;
     }
+    this.gestorePartitaService.vinto.subscribe(() => {
+      this.dati.disabled = true;
+    });
+
     this.gestorePartitaService.resetGame.subscribe(() => {
       this.dati.disabled = false;
     });

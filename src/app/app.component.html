@@ -1,4 +1,10 @@
 <html>
+  <head>
+    <script
+      src="https://kit.fontawesome.com/ffa0aa41c9.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
   <body>
     <div class="tabella">
       <table>
@@ -14,10 +20,15 @@
         </tr>
       </table>
     </div>
+    <div>
+      <i class="fa-solid fa-heart"></i>
+    </div>
 
     <div class="center">
-      <app-disposizione [xy]="bersaglio"></app-disposizione>
       <app-vite></app-vite>
+    </div>
+    <div class="center" style="border: transparent">
+      <app-disposizione [xy]="bersaglio"></app-disposizione>
     </div>
   </body>
 </html>

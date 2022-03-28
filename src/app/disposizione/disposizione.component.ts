@@ -29,19 +29,19 @@ export class DisposizioneComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.arrayNavi = this.generatoreNaviService.getNavi();
+    console.log(this.abbattute);
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    let i = 0;
     this.gestorePartitaService.resetGame.subscribe(() => {
       this.arrayNavi = this.generatoreNaviService.getNavi();
       for (let nave of this.generatoreNaviService.arrayNavi) {
         nave.abbattuta = false;
         nave.colpiSubiti = 0;
+        this.abbattute = 0;
       }
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    let i = 0;
-
     for (let barca of this.arrayNavi) {
       for (let posizione of barca.coordinate) {
         if (this.xy === posizione) {
@@ -51,7 +51,7 @@ export class DisposizioneComponent implements OnInit, OnChanges {
           ) {
             this.arrayNavi[i].abbattuta = true;
             this.abbattute++;
-            if (this.abbattute === this.arrayNavi.length - 1) {
+            if (this.abbattute === this.arrayNavi.length) {
               this.gestorePartitaService.vittoria();
             }
           }
